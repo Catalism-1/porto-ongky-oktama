@@ -9,6 +9,9 @@
 </head>
 <body>
 
+  <div class="progress-bar" id="progressBar"></div>
+  <canvas class="particle-canvas" id="particleCanvas"></canvas>
+
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
@@ -55,6 +58,33 @@
     <div class="hero-scroll">
       <span>SCROLL DOWN</span>
       <div class="scroll-line"></div>
+    </div>
+    <div class="hero-shapes">
+      <div class="hero-shape shape-1"></div>
+      <div class="hero-shape shape-2"></div>
+      <div class="hero-shape shape-3"></div>
+      <div class="hero-shape shape-4"></div>
+      <div class="hero-shape shape-5"></div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" id="stats">
+    <div class="section-container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value"><span class="stat-number" data-target="3">0</span><span class="stat-plus">+</span></div>
+          <p class="stat-label">Tahun Pengalaman</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value"><span class="stat-number" data-target="150">0</span><span class="stat-plus">+</span></div>
+          <p class="stat-label">Video Diedit</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value"><span class="stat-number" data-target="40">0</span><span class="stat-plus">+</span></div>
+          <p class="stat-label">Klien Puas</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -320,5 +350,9 @@
   </div>
 
   <script src="script.js"></script>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 </body>
 </html>

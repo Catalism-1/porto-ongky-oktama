@@ -930,3 +930,295 @@ button { cursor: pointer; font-family: var(--font); border: none; background: no
   .hero-btns { flex-direction: column; align-items: center; }
   .btn-primary, .btn-secondary { width: 100%; text-align: center; }
 }
+
+/* =============================================
+   PROGRESS BAR
+   ============================================= */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  z-index: 10000;
+  width: 0;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* =============================================
+   PARTICLE CANVAS
+   ============================================= */
+.particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+/* =============================================
+   CUSTOM CURSOR
+   ============================================= */
+.cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+  mix-blend-mode: normal;
+}
+.cursor-dot.hover {
+  width: 16px; height: 16px;
+  background: rgba(178, 145, 112, 0.5);
+  border: 1.5px solid var(--gold);
+}
+.cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border: 1.5px solid rgba(178, 145, 112, 0.35);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+}
+.cursor-ring.hover {
+  width: 48px; height: 48px;
+  border-color: var(--gold);
+}
+
+/* =============================================
+   FLOATING HERO SHAPES
+   ============================================= */
+.hero-shapes {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.hero-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.07;
+  background: var(--gold);
+}
+.shape-1 {
+  width: 300px; height: 300px;
+  top: 15%; left: -8%;
+  animation: floatShape1 14s ease-in-out infinite;
+}
+.shape-2 {
+  width: 180px; height: 180px;
+  top: 55%; right: 28%;
+  animation: floatShape2 11s ease-in-out infinite;
+}
+.shape-3 {
+  width: 120px; height: 120px;
+  bottom: 12%; left: 15%;
+  animation: floatShape3 9s ease-in-out infinite;
+}
+.shape-4 {
+  width: 200px; height: 200px;
+  top: 25%; right: -5%;
+  background: var(--navy);
+  opacity: 0.04;
+  animation: floatShape4 16s ease-in-out infinite;
+}
+.shape-5 {
+  width: 90px; height: 90px;
+  bottom: 30%; right: 45%;
+  background: var(--gold-light);
+  opacity: 0.09;
+  animation: floatShape5 12s ease-in-out infinite;
+}
+@keyframes floatShape1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -40px) scale(1.08); }
+  50% { transform: translate(-20px, -20px) scale(0.95); }
+  75% { transform: translate(25px, 15px) scale(1.05); }
+}
+@keyframes floatShape2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-35px, 25px) scale(0.9); }
+  66% { transform: translate(15px, -30px) scale(1.1); }
+}
+@keyframes floatShape3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -25px) scale(1.12); }
+}
+@keyframes floatShape4 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(-40px, -30px) scale(1.06) rotate(15deg); }
+}
+@keyframes floatShape5 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(15px, 20px); }
+  75% { transform: translate(-25px, -15px); }
+}
+
+/* =============================================
+   STATS SECTION
+   ============================================= */
+.stats {
+  background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
+  padding: 56px 0;
+  border-top: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--light-gray);
+  position: relative;
+  z-index: 1;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: center;
+}
+.stat-item {
+  padding: 8px 0;
+  transition: var(--t);
+}
+.stat-value {
+  font-size: clamp(42px, 6vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 6px;
+  display: inline-flex;
+  align-items: baseline;
+}
+.stat-plus {
+  font-size: 0.5em;
+  color: var(--gold);
+  margin-left: 2px;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+/* =============================================
+   BACK TO TOP
+   ============================================= */
+.back-to-top {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background 0.28s ease;
+  box-shadow: var(--shadow-md);
+  border: none;
+  cursor: pointer;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: var(--gold);
+  transform: translateY(-3px) !important;
+  box-shadow: var(--shadow-lg);
+}
+
+/* =============================================
+   3D TILT CARDS
+   ============================================= */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 800px;
+  will-change: transform;
+}
+.tilt-card-content {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+.portfolio-card.tilt-card .card-thumb,
+.portfolio-card.tilt-card .play-overlay {
+  transform-style: preserve-3d;
+}
+.kelebihan-card.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/* =============================================
+   MAGNETIC BUTTON
+   ============================================= */
+.magnetic-btn {
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* =============================================
+   GLOW / HOVER ENHANCEMENTS
+   ============================================= */
+.portfolio-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--gold), transparent, var(--navy));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+.portfolio-card:hover::before {
+  opacity: 0.3;
+}
+
+/* =============================================
+   SMOOTH REVEAL ANIMATION (enhanced)
+   ============================================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up:nth-child(2) { transition-delay: 0.08s; }
+.fade-up:nth-child(3) { transition-delay: 0.16s; }
+.fade-up:nth-child(4) { transition-delay: 0.24s; }
+.fade-up:nth-child(5) { transition-delay: 0.32s; }
+.fade-up:nth-child(6) { transition-delay: 0.40s; }
+.fade-up:nth-child(7) { transition-delay: 0.48s; }
+.fade-up:nth-child(8) { transition-delay: 0.56s; }
+
+/* =============================================
+   RESPONSIVE FOR NEW ELEMENTS
+   ============================================= */
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stat-value { font-size: clamp(28px, 5vw, 40px); }
+  .stat-label { font-size: 10px; }
+  .back-to-top { bottom: 18px; right: 18px; width: 38px; height: 38px; }
+  .hero-shape { display: none; }
+  .cursor-dot, .cursor-ring { display: none; }
+  .particle-canvas { opacity: 0.15; }
+}
+@media (max-width: 480px) {
+  .stats { padding: 36px 0; }
+  .stats-grid { gap: 8px; }
+  .stat-value { font-size: 30px; }
+}
