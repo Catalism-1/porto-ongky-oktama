@@ -4,6 +4,30 @@
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   // =============================================
+  // THEME TOGGLE
+  // =============================================
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    setTheme('dark');
+  } else if (!savedTheme) {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) setTheme('dark');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // =============================================
   // PROGRESS BAR
   // =============================================
   const progressBar = document.getElementById('progressBar');
@@ -79,23 +103,22 @@
 
   // =============================================
   // MOBILE NAV TOGGLE
-  // =============================================
   const navToggle = document.getElementById('navToggle');
   navToggle.addEventListener('click', () => {
     const links = document.querySelector('.nav-links');
-    const btnNav = document.querySelector('.btn-nav');
     if (links.style.display === 'flex') {
       links.style.display = 'none';
     } else {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       links.style.display = 'flex';
       links.style.flexDirection = 'column';
       links.style.position = 'absolute';
       links.style.top = '70px';
       links.style.left = '0';
       links.style.right = '0';
-      links.style.background = '#fff';
+      links.style.background = isDark ? '#1a2332' : '#fff';
       links.style.padding = '20px 40px';
-      links.style.borderBottom = '1px solid #e8e4de';
+      links.style.borderBottom = isDark ? '1px solid #334155' : '1px solid #e8e4de';
       links.style.boxShadow = '0 8px 24px rgba(43,55,79,0.1)';
       links.style.zIndex = '999';
     }
@@ -394,7 +417,7 @@
       if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
     });
     navAnchors.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? '#2b374f' : '';
+      a.style.color = a.getAttribute('href') === '#' + current ? '' : '';
     });
   }, { passive: true });
 
